@@ -5,83 +5,87 @@
   <meta name="viewport"
         content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Bookshelf Apps</title>
+  <title>Bookshelf App</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 <header class="head_bar">
-  <h1 class="head_bar__title">Bookshelf Apps</h1>
+  <h1 class="head_bar__title">BOOKSHELF APP</h1>
 </header>
 <main>
-  <section class="input_section">
-    <h2>Masukkan Buku Baru</h2>
-    <form id="inputBook">
-      <div class="input">
-        <label for="inputBookTitle">Judul</label>
-        <input id="inputBookTitle" type="text" required>
-      </div>
-      <div class="input">
-        <label for="inputBookAuthor">Penulis</label>
-        <input id="inputBookAuthor" type="text" required>
-      </div>
-      <div class="input">
-        <label for="inputBookYear">Tahun</label>
-        <input id="inputBookYear" type="number" required>
-      </div>
-      <div class="input_inline">
-        <label for="inputBookIsComplete">Selesai dibaca</label>
-        <input id="inputBookIsComplete" type="checkbox">
-      </div>
-      <button id="bookSubmit" type="submit">Masukkan Buku ke rak</button>
-    </form>
-  </section>
-  
-  <section class="edit_section" id="edit_section" hidden>
-    <form id="editInputBook">
-      <h2>Edit Buku</h2>
-      <div class="input">
-        <label for="editInputBookTitle">Judul</label>          
-        <input id="editInputBookTitle" type="text" required>        
-      </div>
-      <div class="input">
-        <label for="editInputBookAuthor">Penulis</label>
-        <input id="editInputBookAuthor" type="text" required>
-      </div>
-      <div class="input">
-        <label for="editInputBookYear">Tahun</label>
-        <input id="editInputBookYear" type="number" required>
-      </div>
-      <div class="action">
-        <button class="blue" id="editSubmit" type="submit">Perbarui Data Buku</button>
-        <button class="white" id="editCancelSubmit" type="submit">Batalkan</button>
-      </div>
-    </form>
-  </section>
-  
-  <section class="search_section">
-    <h2>Cari Buku</h2>
-    <form id="searchBook">
-      <label for="searchBookTitle">Judul</label>
-      <input id="searchBookTitle" type="text">
-      <button id="searchSubmit" type="submit">Cari</button>
-      <i id="reloadButton" class="fa fa-refresh fa-2x" aria-hidden="true" style="color:cornflowerblue;"></i>
-    </form>
-  </section>
-  
-  <section id="unreadBook" class="book_shelf">
-    <h2>Belum selesai dibaca</h2>
+  <div class="left">
+    <section class="input_section">
+      <h2>Add New Book</h2>
+      <form id="inputBook">
+        <div class="input">
+          <label for="inputBookTitle">Title</label>
+          <input id="inputBookTitle" type="text" required>
+        </div>
+        <div class="input">
+          <label for="inputBookAuthor">Writer</label>
+          <input id="inputBookAuthor" type="text" required>
+        </div>
+        <div class="input">
+          <label for="inputBookYear">Year</label>
+          <input id="inputBookYear" type="number" min="1200" max="2023" required>
+        </div>
+        <div class="input inline">
+          <label for="inputBookIsComplete">Completed Reading</label>
+          <input id="inputBookIsComplete" type="checkbox">
+        </div>
+        <button id="bookSubmit" type="submit">Save</button>
+      </form>
+    </section>
     
-    <div id="incompleteBookshelfList" class="book_list">
-    </div>
-  </section>
-  
-  <section class="book_shelf" id="readBook">
-    <h2>Selesai dibaca</h2>
+    <section class="edit_section" id="edit_section" hidden>
+      <form id="editInputBook">
+        <h2>Edit Book</h2>
+        <div class="input">
+          <label for="editInputBookTitle">Title</label>          
+          <input id="editInputBookTitle" type="text" required>        
+        </div>
+        <div class="input">
+          <label for="editInputBookAuthor">Writer</label>
+          <input id="editInputBookAuthor" type="text" required>
+        </div>
+        <div class="input">
+          <label for="editInputBookYear">Year</label>
+          <input id="editInputBookYear" type="number" required>
+        </div>
+        <div class="action edit">
+          <button class="pink" id="editSubmit" type="submit">Update</button>
+          <button class="white" id="editCancelSubmit" type="submit">Cancel</button>
+        </div>
+      </form>
+    </section>
     
-    <div id="completeBookshelfList" class="book_list">
-    </div>
-  </section>
+    <section class="search_section">
+      <form id="searchBook">
+        <input id="searchBookTitle" type="text" placeholder="Input book title...">
+        <button id="searchSubmit" type="submit">Search</button>
+        <i id="reloadButton" class="fa fa-refresh fa-2x" aria-hidden="true"></i>
+      </form>
+    </section>
+  </div>
+
+
+  <div class="right">
+    <section id="unreadBook" class="book_shelf">
+      <h2>Incomplete Reading</h2>
+      
+      <div id="incompleteBookshelfList" class="book_list">
+      </div>
+    </section>
+    
+    <section class="book_shelf" id="readBook">
+      <h2>Completed Reading</h2>
+      
+      <div id="completeBookshelfList" class="book_list">
+      </div>
+    </section>
+  </div>
+  
 </main>
 
 <script src="main.js"></script>

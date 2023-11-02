@@ -1,243 +1,310 @@
+@import url('https://fonts.googleapis.com/css2?family=Agbalumo&family=Poppins:wght@400;500&display=swap');
+
+:root {
+  --green: #004225;
+  --white: #FFF2CC;
+  --yellow: #FFD93D;
+  --pink: #DFA67B;
+  --brown: #4F200D;
+}
+
 * {
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
 }
 
-body, input, button {
-    font-family: 'Open Sans', sans-serif;
-}
-
-input, button {
-    font-size: 16px;
+body {
+  height: 100vh;
+  font-family: 'Poppins', sans-serif;
+  max-width: 1300px;
+  margin: auto;
+  /* overflow: hidden; */
+  background: var(--white);
+  color: var(--brown);
 }
 
 .head_bar {
-    padding: 12px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: cornflowerblue;
-    color: white; 
+  padding-block: 12px 8px;
+  text-align: center;
 }
 
+.head_bar__title {
+    letter-spacing: 1px;
+}
 
 main {
-    max-width: 800px;
-    width: 80%;
-    margin: 0 auto;
-    padding: 16px;
+  margin-inline: 3rem;
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  overflow: auto;
 }
 
-.edit_section{
-    position: fixed;
-    height: 100%;
-    width: 100%;
-    top: 0;
-    left: 0;
-    background-color: rgba(0,0,0,0.5);
+.left, .right {
+  flex-basis: 50%;
+  border-radius: 10px;
+  min-width: 500px;
+  padding: 0.5rem;
 }
 
-.edit_section > form > h2 {
-    text-align: center;
-    color: cornflowerblue;
+.left {
+  overflow: auto;
+  display: flex;
+  flex-direction: column;
 }
 
-.edit_section > form {
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-    max-width: 800px;
-    width: 80%;
-    border: 1px solid black;
-    border-radius: 10px;
-    background-color: white;
-    padding: 10px;
+/* GENERAL SECTION */
+.input_section,
+.edit_section > form,
+.search_section,
+.book_shelf {
+  padding: 1.8rem;
+  border-radius: 10px;
+  background: var(--pink);
+  box-shadow: 0px 0px 6px var(--pink);
 }
 
-.edit_section > form > .action > button {
-    border: 2px solid cornflowerblue;
-    border-radius: 5px;
-    display: block;
-    padding: 8px ;
-    margin: 10px 0px;
-    cursor: pointer;
-    width: 100%;
-    font-weight: bold;
+/* LEFT */
+.input_section{
+  margin-bottom: 0.8rem;
+  color: var(--brown)
 }
 
-.edit_section > form > .action > .blue {
-    background-color: cornflowerblue;
-    color: white;
+h2 {
+  text-align: center;
+  letter-spacing: 0.6px;
 }
 
-.edit_section > form > .action > .white {
-    background-color: white;
-    color: cornflowerblue;
+.input {
+  margin-block: 0.5rem;
+  font-weight: 600;
 }
 
-.edit_section > form > .input {
-    margin: 8px 0px;
-}
-.edit_section > form > .input > input {
-    display: block;
-    width: 100%;
-    margin-top: 2px;
-    padding: 8px;
-    border-radius: 5px;
-}
-
-.edit_section > form > .input > label {
-    color: cornflowerblue;
-    font-weight: bold;
-}
-
-.input_section {
-    display: flex;
-    flex-direction: column;
-    padding: 16px;
-    border: 1px solid black;
-    border-radius: 10px;
+.input input, 
+#bookSubmit,
+#searchBookTitle,
+#searchSubmit, 
+#editSubmit,
+#editCancelSubmit {
+  width: 100%;
+  height: 2rem;
+  font-size: 1rem;
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  border: none;
+  background: var(--white);
+  letter-spacing: 0.3px;
+  color: var(--brown);
 }
 
-.input_section > h2 {
-    text-align: center;
-    color: cornflowerblue;
+.inline {
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
 }
 
-.input_section > form > .input {
-    margin: 8px 0;
+.inline input {
+  width: fit-content;
 }
 
-.input_section > form > button {
-    background-color: cornflowerblue;
-    color: white;
-    border: 0;
-    border-radius: 5px;
-    display: block;
-    width: 100%;
-    padding: 8px;
-    cursor: pointer;
+#bookSubmit, 
+#searchSubmit,
+#editSubmit,
+#editCancelSubmit {
+  background: #FFD93D;
+  color: #4F200D;
+  border: none; 
+  font-weight: 600;
+  height:2.2rem;
 }
-
-.input_section > form > .input > input {
-    display: block;
-    width: 100%;
-    padding: 8px;
-    border-radius: 5px;
-}
-
-.input_section > form > .input > label {
-    color: cornflowerblue;
-    font-weight: bold;
-}
-
-.input_section > form > .input_inline {
-    margin: 12px 0;
-    display: flex;
-    align-items: center;
-}
-
-.input_section > form > .input_inline > label {
-    color: cornflowerblue;
-    font-weight: bold;
-    margin-right: 10px;
-}
-
+ 
 .search_section {
-    margin: 16px 0;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 16px;
-    border: 1px solid black;
-    border-radius: 10px;
+  padding-block: 1.1rem;
 }
 
-.search_section > h2 {
-    color: cornflowerblue;
+#searchBook {
+  display: flex;
+  gap: 16px;
+  justify-content: space-between;
+  align-items: center;
 }
 
-.search_section > form {
-    padding: 16px;
-    width: 100%;
-    min-width: 300px;
-    display: grid;
-    grid-template-columns: auto 1fr 0.3fr 0.1fr;
-    grid-gap: 10px;
+#searchBookTitle {
+  width: 80%;
 }
 
-.search_section > form > label {
-    display: flex;
-    align-items: center;
+#searchSubmit {
+  width: 20%;
 }
 
-.search_section > form > input {
-    padding: 5px;
-    border-radius: 5px;
+#searchBookTitle::placeholder {
+  font-style: italic;
+  font-size: 13px;
 }
 
-.search_section > form > button {
-    background-color: cornflowerblue;
-    color: white;
-    border: 0;
-    border-radius: 5px;
-    cursor: pointer;
-    padding: 6px;
+.right {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  gap: 0.9rem;
 }
 
 .book_shelf {
-    margin: 16px 0 0 0;
-    border: 1px solid black;
-    padding: 16px;
-    border-radius: 10px;
+  overflow-y: auto;
+  flex-basis: 1;
+  height: 218px;
+  /* max-height: fit-content; */
 }
 
-.book_shelf > h2 {
-    color: cornflowerblue;
-    text-align: center;
+.book_shelf h2 {
+  margin-bottom: 1rem;
 }
 
-.book_shelf > .book_list {
-    padding: 16px;
+.book_shelf {
+  background: var(--pink)
 }
 
-.book_shelf > .book_list > .book_item {
-    padding: 8px 16px 16px 16px;
-    border: 1px solid black;
-    border-radius: 5px;
-    margin: 10px 0;
+.book_list {
+  overflow-y: auto;
+  display: flex;
+  gap: 0.2rem;
+  flex-wrap: wrap;
+  justify-content: space-between;
 }
 
-.book_shelf > .book_list > .book_item > h3, p {
-    margin: 8px 0;
+::-webkit-scrollbar {
+  width: 2px;
+  background-color: transparent;
 }
 
-.book_shelf > .book_list > .book_item > .action > button {
-    border: 0;
-    padding: 5px;
-    margin: 0 5px 0 0;
-    border-radius: 5px;
-    cursor: pointer;
+.book_item {
+  border: 1px solid var(--white);
+  padding: 0.8rem;
+  border-radius: 10px;
+  background: var(--white);
+  margin-bottom: 0.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  width: 49%;
+  overflow: auto;
+  height: 120px;
 }
 
-.book_shelf > .book_list > .book_item > .action > .green {
-    background-color: darkgreen;
-    color: white;
+.book_image {
+  background: radial-gradient(var(--yellow) 0% 65%, transparent 65% 100%);
+  height: 3rem;
+  width: 3rem;
+  border-radius: 50%;
+  border: 0.2rem solid var(--brown);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.3rem;
+  font-weight: 500;
+  font-family: 'Agbalumo';
+  overflow: hidden;
 }
 
-.book_shelf > .book_list > .book_item > .action > .red {
-    background-color: darkred;
-    color: white;
+.book_description {
+  width: 60%;
+  font-size: 0.85rem;
 }
 
-.book_shelf > .book_list > .book_item > .action > .blue {
-    background-color: darkorange;
-    color: white;
+.action {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
 }
 
-.book_shelf > .book_list > .note {
-    color: grey;
-    text-align: center;
+.book_icon {
+  font-size: 1rem;
+  color: var(--brown);
+  border-radius: 50%;
+  border: none;
+  font-weight: 500;
+  background: transparent;
+}
+
+.edit_section{
+  position: fixed;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  left: 0;
+  color: var(--brown);
+  background-color: rgba(0,0,0,0.5);
+}
+
+.edit_section > form > h2 {
+  text-align: center;
+}
+
+.edit_section > form {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  max-width: 800px;
+  width: 45%;
+  background-color: var(--pink);
+  padding: 1.6rem;
+  min-width: 600px;
+  z-index: 999;
+}
+
+
+.edit_section > form > .action > button {
+  display: block;
+  padding: 8px ;
+  margin: 10px 0px;
+  cursor: pointer;
+  
+  
+  background: var(--yellow);
+  color: var(--brown);
+  border: none; 
+  font-weight: 600;
+  height:2.2rem;
+}
+
+
+.edit_section > form > .action > .white {
+  background-color: white;
+  color: cornflowerblue;
+}
+
+#editSubmit {
+  margin-bottom: -6px;
+}
+
+#editCancelSubmit {
+  background: var(--white);
+}
+
+.note {
+  display: block;
+  margin: auto;
+  font-size: medium;
+}
+
+button:hover,
+#reloadButton:hover {
+  transform: scale(1.025);
+}
+
+@media screen and (max-width: 1000px) {
+  main {
+    flex-direction: column;
+  }
+
+  h1 {
+    text-align: left;
+    margin-left: 3.3rem
+  }
+
+  .right {
+    overflow: scroll;
+  }
 }

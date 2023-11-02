@@ -45,7 +45,7 @@ document.addEventListener('DOMContentLoaded', () => {
 const makeNote = () => {
     const shelfNote = document.createElement('h3');
     shelfNote.classList.add('note');   
-    shelfNote.innerText = 'Buku tidak terdaftar';
+    shelfNote.innerText = 'No book yet';
     return(shelfNote);
 }
 
@@ -121,7 +121,6 @@ document.addEventListener(RENDER_EVENT, () => {
         const bookElement = makeElement(book);
         if (book.isComplete) readBook.appendChild(bookElement);
         else unreadBook.append(bookElement);
-        
     } 
 })
 
@@ -129,46 +128,62 @@ const makeElement = (book) => {
     const articleContainer = document.createElement('article');
     articleContainer.classList.add('book_item');
     articleContainer.setAttribute('id', `book-${book.id}`)
+    
+
+    const initialImg = generateImg(book.title);
+    const bookImg = document.createElement('div');
+    bookImg.classList.add('book_image');
+    bookImg.innerHTML = `<p>${initialImg}</p>`;
+
+    const descriptionContainer = document.createElement('div');
+    descriptionContainer.classList.add('book_description');
+
+    articleContainer.append(bookImg, descriptionContainer);
 
     const textTitle = document.createElement('h3');
     textTitle.innerText = book.title;
 
     const textAuthor = document.createElement('p');
-    textAuthor.innerText = `Penulis: ${book.author}`;
+    textAuthor.innerText = `${book.author}`;
 
     const textYear = document.createElement('p');
-    textYear.innerText = `Tahun: ${book.year}`;
+    textYear.innerText = `${book.year}`;
 
     const buttonContainer = document.createElement('div');
     buttonContainer.classList.add('action');
 
     const buttonRead = document.createElement('button');
-    buttonRead.classList.add('green');
-    buttonRead.innerText = 'Selesai dibaca';
+    buttonRead.classList.add('book_icon');
+    buttonRead.setAttribute('title', 'Completed');
+    buttonRead.innerHTML = '<i class="fa fa-check" aria-hidden="true"></i>';
     buttonRead.addEventListener('click', () => {
         addToCompleteReading(book.id);
         document.dispatchEvent(new CustomEvent(NOTE_EVENT));
     })
 
+    
     const buttonUnread = document.createElement('button');
-    buttonUnread.classList.add('green');
-    buttonUnread.innerText = 'Belum selesai di Baca';
+    buttonUnread.classList.add('book_icon');
+    buttonUnread.setAttribute('title', 'Incomplete');
+    buttonUnread.innerHTML = '<i class="fa fa-close" aria-hidden="true"></i>';
     buttonUnread.addEventListener('click', () => { 
         addToIncompleteReading(book.id);
         document.dispatchEvent(new CustomEvent(NOTE_EVENT));
     });
 
     const buttonDelete = document.createElement('button');
-    buttonDelete.classList.add('red');
-    buttonDelete.innerText = 'Hapus buku';
+    buttonDelete.classList.add('book_icon');
+    buttonDelete.setAttribute('title', "Delete");
+    buttonDelete.innerHTML = '<i class="fa fa-trash-o" aria-hidden="true"></i>';
     buttonDelete.addEventListener('click', () => { 
         deleteBook(book.id);
         document.dispatchEvent(new CustomEvent(NOTE_EVENT));
     });
 
     const buttonEdit = document.createElement('button');
-    buttonEdit.classList.add('blue');
-    buttonEdit.innerText = 'Edit buku';
+    buttonEdit.classList.add('book_icon');
+    buttonEdit.setAttribute('title', 'Edit');
+    buttonEdit.innerHTML = '<i class="fa fa-pencil" aria-hidden="true"></i>';
     buttonEdit.addEventListener('click', () => { 
         editBook(book.id);
     });
@@ -176,7 +191,8 @@ const makeElement = (book) => {
     if (!book.isComplete) buttonContainer.append(buttonRead, buttonDelete, buttonEdit);
     else buttonContainer.append(buttonUnread, buttonDelete, buttonEdit);
     
-    articleContainer.append(textTitle, textAuthor,textYear,buttonContainer);
+    descriptionContainer.append(textTitle, textAuthor,textYear);
+    articleContainer.append(buttonContainer);
     return articleContainer;
 }
 
@@ -201,7 +217,7 @@ const deleteBook = (id) => {
     const deleteTarget = findBookIndex(id);
     if (deleteTarget === -1) return;
 
-    let confirmDelete = `Buku berjudul ${books[deleteTarget].title} karya ${books[deleteTarget].author} akan dihapus`;
+    let confirmDelete = `Book entitled ${books[deleteTarget].title} from ${books[deleteTarget].author} will be deleted`;
     if (confirm(confirmDelete)){
         books.splice(deleteTarget, 1);
         document.dispatchEvent(new CustomEvent(RENDER_EVENT));
@@ -313,7 +329,7 @@ const searchBook = (searchTitle) => {
         checkHeadTitle();
         document.dispatchEvent(new CustomEvent(RENDER_EVENT));
         document.dispatchEvent(new CustomEvent(NOTE_EVENT));
-        alert(`Buku berjudul ${searchTitle} tidak ditemukan`);
+        alert(`Book entitled ${searchTitle} is not found!`);
     }
     else {
         document.dispatchEvent(new CustomEvent(SEARCH_EVENT, {detail: comparingBookResult}));
@@ -365,3 +381,19 @@ const elemenBookResult = (bookSearch) => {
     resultTitle.style.textAlign = 'center';
     mainDiv[0].insertBefore(resultTitle, beforeDiv);
 }
+
+
+
+
+function generateImg(title) {
+    const splitTitle = title.split(" ");
+    let firstLetter = "";
+
+    for (let i = 0; i < splitTitle.length; i++) {
+        firstLetter += splitTitle[i].charAt(0).toUpperCase();
+    }
+    
+    return firstLetter;
+}
+
+
