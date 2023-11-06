@@ -19,7 +19,6 @@ body {
   font-family: 'Poppins', sans-serif;
   max-width: 1300px;
   margin: auto;
-  /* overflow: hidden; */
   background: var(--white);
   color: var(--brown);
 }
@@ -71,9 +70,22 @@ main {
   color: var(--brown)
 }
 
-h2 {
+.left h2 {
   text-align: center;
+  font-size: 1.2rem;
+}
+
+h2 {
   letter-spacing: 0.6px;
+  font-size: 1rem;
+}
+
+.book_description h3 {
+  font-size: 0.9rem;
+}
+
+.book_description p {
+  font-size: 0.8rem;
 }
 
 .input {
@@ -120,7 +132,7 @@ h2 {
 }
  
 .search_section {
-  padding-block: 1.1rem;
+  flex-grow: 1;
 }
 
 #searchBook {
@@ -154,7 +166,6 @@ h2 {
   overflow-y: auto;
   flex-basis: 1;
   height: 218px;
-  /* max-height: fit-content; */
 }
 
 .book_shelf h2 {
@@ -254,21 +265,17 @@ h2 {
   z-index: 999;
 }
 
-
 .edit_section > form > .action > button {
   display: block;
   padding: 8px ;
   margin: 10px 0px;
   cursor: pointer;
-  
-  
   background: var(--yellow);
   color: var(--brown);
   border: none; 
   font-weight: 600;
   height:2.2rem;
 }
-
 
 .edit_section > form > .action > .white {
   background-color: white;

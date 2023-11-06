@@ -13,19 +13,21 @@ document.addEventListener('DOMContentLoaded', () => {
     const reloadButton = document.getElementById('reloadButton');
 
     submitBook.addEventListener('click', (event) => {
+        
         addBook();
         event.preventDefault();
         const inputs = document.querySelectorAll('#inputBookTitle, #inputBookAuthor, #inputBookYear');
         inputs.forEach(input => {
             input.value = '';
         });
+
     });
 
     searchSubmit.addEventListener('click', (event) =>{
         event.preventDefault();
         const searchTitle = document.getElementById('searchBookTitle').value;
         if (searchTitle !== '') searchBook(searchTitle);
-        else alert('Silahkan isi kolom pencarian buku');
+        else alert('Please fill in the book search field');
     });
 
     reloadButton.addEventListener('click', (event) => {
@@ -80,10 +82,16 @@ const addBook = () => {
 
     checkHeadTitle();
 
-    if(bookTitle !== '' && bookAuthor!=='' && bookYear!==''){
-        const bookObject = generateBookObject(bookId, bookTitle, bookAuthor, bookYear, bookIsRead);
-        books.push(bookObject);
-    } else alert('Silahkan lengkapi formulir Buku Baru');
+    if(bookTitle !== '' && bookAuthor!=='' && bookYear!=='') {
+        if(bookYear >= 1800 && bookYear <= 2023) {
+            const bookObject = generateBookObject(bookId, bookTitle, bookAuthor, bookYear, bookIsRead);
+            books.push(bookObject);
+        } else {
+            document.getElementById('error-message').style.display = 'block';
+        }
+    } else{
+        document.getElementById('error-message').style.display = 'block';
+    }
 
     document.dispatchEvent(new CustomEvent(RENDER_EVENT));
     document.dispatchEvent(new CustomEvent(NOTE_EVENT));
@@ -129,7 +137,6 @@ const makeElement = (book) => {
     articleContainer.classList.add('book_item');
     articleContainer.setAttribute('id', `book-${book.id}`)
     
-
     const initialImg = generateImg(book.title);
     const bookImg = document.createElement('div');
     bookImg.classList.add('book_image');
@@ -382,18 +389,19 @@ const elemenBookResult = (bookSearch) => {
     mainDiv[0].insertBefore(resultTitle, beforeDiv);
 }
 
-
-
-
 function generateImg(title) {
-    const splitTitle = title.split(" ");
-    let firstLetter = "";
+    const words = title.split(" ");
+    let initials = "";
 
-    for (let i = 0; i < splitTitle.length; i++) {
-        firstLetter += splitTitle[i].charAt(0).toUpperCase();
+    for (let i = 0; i < words.length; i++) {
+        const word = words[i];
+        if (word) {
+            initials += word[0].toUpperCase();
+        }
     }
-    
-    return firstLetter;
+
+    if (initials.length >= 2) {
+        initials = initials.slice(0, 2);
+    }
+    return initials;
 }
-
-

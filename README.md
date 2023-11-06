@@ -39,4 +39,4 @@ The "Bookshelf-App" is built using various technologies, including:
 5. Fill in book information and click "Save" to add it to your list.
 6. You can view the list of books you've added and also edit, toggle completion status, or remove books as needed.
 
-Copyright © 2023 [Azalya Rahmatika](azalyarahmatika.com)
+Copyright © 2023 [Azalya Rahmatika](https.azalyarahmatika.com)
