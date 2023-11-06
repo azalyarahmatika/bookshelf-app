@@ -158,13 +158,14 @@ h2 {
 .right {
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
-  gap: 0.9rem;
+  justify-content: space-between;
+  gap: 0.8rem;
 }
 
 .book_shelf {
   overflow-y: auto;
   flex-basis: 1;
+  flex-grow: 1;
   height: 218px;
 }
 
