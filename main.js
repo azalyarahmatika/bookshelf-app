@@ -12,15 +12,13 @@ document.addEventListener('DOMContentLoaded', () => {
     const searchSubmit = document.getElementById('searchSubmit');
     const reloadButton = document.getElementById('reloadButton');
 
-    submitBook.addEventListener('click', (event) => {
-        
+    submitBook.addEventListener('click', (event) => {    
         addBook();
         event.preventDefault();
         const inputs = document.querySelectorAll('#inputBookTitle, #inputBookAuthor, #inputBookYear');
         inputs.forEach(input => {
             input.value = '';
         });
-
     });
 
     searchSubmit.addEventListener('click', (event) =>{
@@ -45,9 +43,8 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 const makeNote = () => {
-    const shelfNote = document.createElement('h3');
-    shelfNote.classList.add('note');   
-    shelfNote.innerText = 'No book yet';
+    const shelfNote = document.createElement('div');
+    shelfNote.innerHTML = '<i class="fa fa-folder-open note" aria-hidden="true"></i>';
     return(shelfNote);
 }
 
@@ -392,14 +389,12 @@ const elemenBookResult = (bookSearch) => {
 function generateImg(title) {
     const words = title.split(" ");
     let initials = "";
-
     for (let i = 0; i < words.length; i++) {
         const word = words[i];
         if (word) {
             initials += word[0].toUpperCase();
         }
     }
-
     if (initials.length >= 2) {
         initials = initials.slice(0, 2);
     }

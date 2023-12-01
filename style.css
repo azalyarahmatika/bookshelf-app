@@ -110,6 +110,14 @@ h2 {
   color: var(--brown);
 }
 
+input:-webkit-autofill {
+  transition: background-color 5000s ease-in-out 0s;
+}
+
+input:focus {
+  outline: 2px solid var(--brown);
+}
+
 .inline {
   display: flex;
   align-items: center;
@@ -167,6 +175,7 @@ h2 {
   flex-basis: 1;
   flex-grow: 1;
   height: 218px;
+  position: relative;
 }
 
 .book_shelf h2 {
@@ -293,8 +302,12 @@ h2 {
 
 .note {
   display: block;
-  margin: auto;
-  font-size: medium;
+  font-size: 3rem;
+  margin-top: 1rem;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
 button:hover,
