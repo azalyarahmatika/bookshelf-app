@@ -118,6 +118,10 @@ input:focus {
   outline: 2px solid var(--brown);
 }
 
+input[type="checkbox"]:focus {
+  outline: none;
+}
+
 .inline {
   display: flex;
   align-items: center;
